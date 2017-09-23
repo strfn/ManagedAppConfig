@@ -13,6 +13,7 @@
 		49201DE21F75C0550036B211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49201DE11F75C0550036B211 /* Assets.xcassets */; };
 		49201DE51F75C0550036B211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49201DE31F75C0550036B211 /* LaunchScreen.storyboard */; };
 		49201DF01F75C0550036B211 /* ManagedAppConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49201DEF1F75C0550036B211 /* ManagedAppConfigTests.swift */; };
+		49A205771F75C3AA00CE7952 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A205761F75C3AA00CE7952 /* ManagedAppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		49201DEB1F75C0550036B211 /* ManagedAppConfigTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ManagedAppConfigTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49201DEF1F75C0550036B211 /* ManagedAppConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigTests.swift; sourceTree = "<group>"; };
 		49201DF11F75C0550036B211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49A205761F75C3AA00CE7952 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				49201DE11F75C0550036B211 /* Assets.xcassets */,
 				49201DE31F75C0550036B211 /* LaunchScreen.storyboard */,
 				49201DE61F75C0550036B211 /* Info.plist */,
+				49A205761F75C3AA00CE7952 /* ManagedAppConfig.swift */,
 			);
 			path = ManagedAppConfig;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49A205771F75C3AA00CE7952 /* ManagedAppConfig.swift in Sources */,
 				49201DDD1F75C0540036B211 /* ViewController.swift in Sources */,
 				49201DDB1F75C0540036B211 /* AppDelegate.swift in Sources */,
 			);
