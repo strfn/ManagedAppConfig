@@ -14,7 +14,7 @@
 		49201DE51F75C0550036B211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49201DE31F75C0550036B211 /* LaunchScreen.storyboard */; };
 		49201DF01F75C0550036B211 /* ManagedAppConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49201DEF1F75C0550036B211 /* ManagedAppConfigTests.swift */; };
 		49A205771F75C3AA00CE7952 /* ManagedAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A205761F75C3AA00CE7952 /* ManagedAppConfig.swift */; };
-		49A2057A1F77183000CE7952 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 49A205781F77182C00CE7952 /* .travis.yml */; };
+		49A2057C1F771AAD00CE7952 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 49A2057B1F771AAD00CE7952 /* .travis.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,7 @@
 		49201DEF1F75C0550036B211 /* ManagedAppConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfigTests.swift; sourceTree = "<group>"; };
 		49201DF11F75C0550036B211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49A205761F75C3AA00CE7952 /* ManagedAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppConfig.swift; sourceTree = "<group>"; };
-		49A205781F77182C00CE7952 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		49A2057B1F771AAD00CE7952 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 		49201DEE1F75C0550036B211 /* ManagedAppConfigTests */ = {
 			isa = PBXGroup;
 			children = (
-				49A205781F77182C00CE7952 /* .travis.yml */,
+				49A2057B1F771AAD00CE7952 /* .travis.yml */,
 				49201DEF1F75C0550036B211 /* ManagedAppConfigTests.swift */,
 				49201DF11F75C0550036B211 /* Info.plist */,
 			);
@@ -195,7 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49A2057A1F77183000CE7952 /* .travis.yml in Resources */,
+				49A2057C1F771AAD00CE7952 /* .travis.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
