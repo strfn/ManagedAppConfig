@@ -1,2 +1,4 @@
 language: swift
+xcode_project: ManagedAppConfig.xcodeproj
+xcode_scheme: ManagedAppConfig
 xcode_sdk: iphonesimulator7.0
