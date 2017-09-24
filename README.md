@@ -1,4 +1,4 @@
-#ManagedAppConfig [![Build Status](https://travis-ci.org/strfn/ManagedAppConfig.svg?branch=develop)](https://travis-ci.org/strfn/ManagedAppConfig)
+# ManagedAppConfig [![Build Status](https://travis-ci.org/strfn/ManagedAppConfig.svg?branch=develop)](https://travis-ci.org/strfn/ManagedAppConfig)
 
 ManagedAppConfig is a swift library implementing AppConfig standard for Enterprise Apps.
 Check [AppConfig.org](https://www.appconfig.org/ios/) for more details (disclaimer, I'm not associated with them)
