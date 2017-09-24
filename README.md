@@ -1,4 +1,4 @@
-# ManagedAppConfig [![Build Status](https://travis-ci.org/strfn/ManagedAppConfig.svg?branch=develop)](https://travis-ci.org/strfn/ManagedAppConfig)
+#ManagedAppConfig [![Build Status](https://travis-ci.org/strfn/ManagedAppConfig.svg?branch=develop)](https://travis-ci.org/strfn/ManagedAppConfig)
 
 ManagedAppConfig is a swift library implementing AppConfig standard for Enterprise Apps.
 Check [AppConfig.org](https://www.appconfig.org/ios/) for more details (disclaimer, I'm not associated with them)
@@ -65,3 +65,24 @@ bridge.send(timestamp: Date(), withKey:  lastLoginTimestampKey)
 ```
 
 
+Using Enums as Keys
+-----------
+
+In a more swifty way Keys can also be represented with ***enums*** as log as those are represented as ***String***
+
+```swift
+enum Keys: String {
+case username = "com.managed.username"
+case server = "com.managed.server"
+case loginErrors = "com.feedback.loginerrors"
+.....
+}
+
+//read a config
+let username: String? = ManagedAppConfig.standard.read(Keys.username)
+
+//send data to the MDM server
+ManagedAppFeedback.standard.send("some values", for: Keys.loginErrors)
+ManagedAppFeedback.standard.clearFeedback(Keys.loginErrors)
+... same for all the other methods.
+```

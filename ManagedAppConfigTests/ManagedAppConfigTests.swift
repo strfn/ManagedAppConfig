@@ -55,6 +55,14 @@ class ManagedAppConfigTests: XCTestCase {
         XCTAssertNotNil(result, "Can read a dictionary")
     
     }
+    
+    func testUseEnumsAsKey() {
+        enum Keys: String {
+            case aKey = "key.string"
+        }
+        let result : String? = testableObject.read(Keys.aKey)
+         XCTAssertEqual(result, MDMChannelMock.Values.string, "Can read using enum keys")
+    }
 }
 
 

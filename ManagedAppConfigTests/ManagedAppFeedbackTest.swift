@@ -25,8 +25,9 @@ class ManagedAppFeedbackTest: XCTestCase {
         super.tearDown()
     }
     
-    func testIsWritingFeedbackToTheRootDictionary() {
-        
+    func testSingleton() {
+        let singleton = ManagedAppFeedback.standard
+        XCTAssert(singleton.provider is UserDefaults, "Singleton provider is userdefaults")
     }
     
     func testCanWriteString() {
@@ -34,6 +35,12 @@ class ManagedAppFeedbackTest: XCTestCase {
         let key = "com.string"
         testableObject.send(value, for: key)
         XCTAssertEqual(MDMMock.feedbackValue(forKey: key), value, "Can send a string feedback")
+        
+        enum Keys: String {
+            case someKey = "com.enumKey"
+        }
+        testableObject.send(value, for: Keys.someKey)
+        XCTAssertEqual(MDMMock.feedbackValue(forKey: Keys.someKey.rawValue), value, "Can sed string values using enum keys")
     }
 
     func testCanWriteInteger() {

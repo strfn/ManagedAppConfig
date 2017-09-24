@@ -40,3 +40,10 @@ public class ManagedAppConfig {
         return all[key] as? T
     }
 }
+
+private typealias EnumKeys = ManagedAppConfig
+extension EnumKeys {
+    func read<K: RawRepresentable, T>(_ key: K) -> T? where K.RawValue == String {
+        return read(key.rawValue)
+    }
+}

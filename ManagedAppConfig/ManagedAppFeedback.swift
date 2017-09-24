@@ -14,13 +14,13 @@ public class ManagedAppFeedback {
     
     
     /// singleton ManagedAppConfig object based on NSUserdefaults.
-    public static let standard = ManagedAppConfig(with: UserDefaults.standard)
+    public static let standard = ManagedAppFeedback(with: UserDefaults.standard)
     
     
     /// the root key of the dictionary to where write the feedback
     static let managedFeedbackRootKey  = "com.apple.feedback.managed"
     
-    private var provider: MDMCommunicationChannel!
+    public private(set) var provider: MDMCommunicationChannel!
     
     
     init(with provider: MDMCommunicationChannel) {
@@ -40,7 +40,7 @@ public class ManagedAppFeedback {
 
 
 /// Helpers methods for sending feedback based on counters
-typealias CounterAndIntegers = ManagedAppFeedback
+fileprivate typealias CounterAndIntegers = ManagedAppFeedback
 extension CounterAndIntegers {
     func increment(counter withKey:String) {
         var dict = feedbackDictionary()
@@ -54,7 +54,7 @@ extension CounterAndIntegers {
 }
 
 
-typealias DatesAndTimestamps = ManagedAppFeedback
+fileprivate typealias DatesAndTimestamps = ManagedAppFeedback
 extension DatesAndTimestamps {
     func send(timestamp: Date, withKey key: String) {
         writeToFeedbackDictionary(timestamp, forKey: key)
@@ -71,5 +71,29 @@ extension Internals {
         var dict = feedbackDictionary()
         dict[forKey] = value
         provider.set(dict, forKey: ManagedAppFeedback.managedFeedbackRootKey)
+    }
+}
+
+
+fileprivate typealias EnumKeys = ManagedAppFeedback
+extension EnumKeys {
+    func send<T,K: RawRepresentable>(_ value: T, for feedbackKey: K) where K.RawValue == String {
+        return send(value, for: feedbackKey.rawValue)
+    }
+    
+    func clearFeedback<K: RawRepresentable>(_ key: K) where K.RawValue == String {
+        return clearFeedback(key.rawValue)
+    }
+    
+    func increment<K: RawRepresentable>(counter withKey:K) where K.RawValue == String {
+       return increment(counter: withKey.rawValue)
+    }
+    
+    func reset<K: RawRepresentable>(counter withKey: K) where K.RawValue == String {
+       return reset(counter: withKey.rawValue)
+    }
+    
+    func send<K: RawRepresentable>(timestamp: Date, withKey key: K) where K.RawValue == String {
+        return send(timestamp: timestamp, withKey: key.rawValue)
     }
 }
