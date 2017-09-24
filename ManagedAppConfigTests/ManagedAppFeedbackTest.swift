@@ -45,24 +45,37 @@ class ManagedAppFeedbackTest: XCTestCase {
     
     func testCanIncemementInteger() {
         let key = "com.counter"
-        testableObject.increment(integer: key)
+        testableObject.increment(counter: key)
         var storedValue: Int? = MDMMock.feedbackValue(forKey: key)
         XCTAssertEqual(1, storedValue, "Counter is iniy to 1 for new keys")
-        testableObject.increment(integer: key)
+        testableObject.increment(counter: key)
         storedValue = MDMMock.feedbackValue(forKey: key)
         XCTAssertEqual(2, storedValue, "Counter value is incremented on increment call")
         
     }
     
     func testCanZeroInteger() {
-        XCTFail("NOt implemented")
+        let integer = 10
+        let key = "com.integer"
+        //write some value first
+        testableObject.send(integer, for: key)
+        //then reset to 0
+        testableObject.reset(counter: key)
+        XCTAssertEqual(0, MDMMock.feedbackValue(forKey: key), "Counter has been reset to 0")
     }
     
     func testCanWriteTimestamp() {
-        XCTFail("NOt implemented")
+        let timestamp = Date()
+        let key = "com.timestamp"
+        testableObject.send(timestamp: timestamp, withKey: key)
+        XCTAssertEqual(timestamp, MDMMock.feedbackValue(forKey: key),"Timestamp has been send")
     }
     
     func testCanClearFeedback() {
-        XCTFail("NOt implemented")
+        let key = "com.toremove"
+        testableObject.send("any data", for: key)
+        testableObject.clearFeedback(key)
+        XCTAssertNil(MDMMock.feedbackValue(forKey: key), "Feedback has been deleted")
+        
     }
 }

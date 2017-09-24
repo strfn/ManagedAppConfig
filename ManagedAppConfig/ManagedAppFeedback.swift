@@ -31,22 +31,43 @@ public class ManagedAppFeedback {
         writeToFeedbackDictionary(value, forKey: feedbackKey)
     }
     
-    func increment(integer forKey:String) {
+    func clearFeedback(_ key: String) {
+        var data = feedbackDictionary()
+        data.removeValue(forKey: key)
+        provider.set(data, forKey: ManagedAppFeedback.managedFeedbackRootKey)
+    }
+}
+
+
+/// Helpers methods for sending feedback based on counters
+typealias CounterAndIntegers = ManagedAppFeedback
+extension CounterAndIntegers {
+    func increment(counter withKey:String) {
         var dict = feedbackDictionary()
-        let currentValue: Int = dict[forKey] as? Int ?? 0
-        writeToFeedbackDictionary(currentValue + 1, forKey: forKey)
+        let currentValue: Int = dict[withKey] as? Int ?? 0
+        writeToFeedbackDictionary(currentValue + 1, forKey: withKey)
     }
     
-    func resetCounter(forKey: String) {
-        writeToFeedbackDictionary(0, forKey: forKey)
+    func reset(counter withKey: String) {
+        writeToFeedbackDictionary(0, forKey: withKey)
     }
-    
-    
-    private func feedbackDictionary() -> [String: Any] {
+}
+
+
+typealias DatesAndTimestamps = ManagedAppFeedback
+extension DatesAndTimestamps {
+    func send(timestamp: Date, withKey key: String) {
+        writeToFeedbackDictionary(timestamp, forKey: key)
+    }
+}
+
+fileprivate typealias Internals = ManagedAppFeedback
+extension Internals {
+    fileprivate func feedbackDictionary() -> [String: Any] {
         return provider.dictionary(forKey: ManagedAppFeedback.managedFeedbackRootKey) ?? [:]
     }
     
-    private func writeToFeedbackDictionary(_ value: Any, forKey: String) {
+    fileprivate func writeToFeedbackDictionary(_ value: Any, forKey: String) {
         var dict = feedbackDictionary()
         dict[forKey] = value
         provider.set(dict, forKey: ManagedAppFeedback.managedFeedbackRootKey)
