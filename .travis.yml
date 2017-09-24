@@ -1,7 +1,5 @@
 language: swift
 osx_image: xcode9
 xcode_project: ManagedAppConfig.xcodeproj
-xcode_scheme: ManagedAppConfig
-xcode_sdk: iphonesimulator7.0
 script:
  - xcodebuild clean test -project ManagedAppConfig.xcodeproj -scheme ManagedAppConfig -destination "platform=iOS Simulator,name=iPhone 7,OS=11.0" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet

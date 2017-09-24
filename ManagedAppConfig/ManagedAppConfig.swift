@@ -12,15 +12,20 @@ import Foundation
 
 public protocol MDMCommunicationChannel {
     func dictionary(forKey: String) -> [String : Any]?
+    func set(_ object: Any?, forKey: String)
 }
 
 extension UserDefaults: MDMCommunicationChannel {}
 
 public class ManagedAppConfig {
-    static let managedConfigRootKey = "com.apple.configuration.managed"
-    static let feedbackKey = "com.apple.feedback.managed"
     
-    private var provider: MDMCommunicationChannel = UserDefaults.standard
+    
+    /// singleton ManagedAppConfig object based on NSUserdefaults.
+    public static let standard = ManagedAppConfig(with: UserDefaults.standard)
+    
+    static let managedConfigRootKey = "com.apple.configuration.managed"
+    
+    private var provider: MDMCommunicationChannel!
     
     
     init(with provider: MDMCommunicationChannel) {

@@ -50,37 +50,12 @@ class ManagedAppConfigTests: XCTestCase {
         XCTAssertEqual(result, MDMChannelMock.Values.url, "Can read an Int")
     }
     
+    func testCanReadDictionary() {
+        let result : [String:String]? = testableObject.read(MDMChannelMock.Keys.dictionary)
+        XCTAssertNotNil(result, "Can read a dictionary")
     
-    
-}
-
-
-class MDMChannelMock: MDMCommunicationChannel {
-    
-    var keyUsedForRootDictionary = ""
-    
-    private let managedConfigs : [String : Any] = [
-        Keys.string : Values.string,
-        Keys.integer: Values.integer,
-        Keys.url: Values.url
-    ]
-
-    func dictionary(forKey: String) -> [String : Any]? {
-        keyUsedForRootDictionary = forKey
-        return managedConfigs
-    }
-    
-
-    // Mock data
-    struct Keys {
-        static let string = "key.string"
-        static let integer = "key.integer"
-        static let url = "key.url"
-    }
-    
-    struct Values {
-        static let string = "values.string"
-        static let integer = 1
-        static let url = URL(string: "http://www.google.com")!
     }
 }
+
+
+
